@@ -9,6 +9,7 @@ import { useCallback } from "react";
 const TasksPage = ({ id, queryId }) => {
   const handleCheckSubscription = useCallback(async () => {
     console.log("click");
+    const dataRef = { id, queryId };
     try {
       console.log("start", id, queryId);
       const response = await fetch(`${path}/check-subscription`, {
@@ -16,7 +17,7 @@ const TasksPage = ({ id, queryId }) => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ id, queryId }),
+        body: JSON.stringify(dataRef),
       });
 
       const data = await response.json();
