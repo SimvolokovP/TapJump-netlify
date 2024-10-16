@@ -28,7 +28,7 @@ const TasksPage = ({ data, setData }) => {
             status === "administrator" ||
             status === "creator"
         );
-        setData({ ...data, isSub: true, score: score + 10000 });
+        setData({ ...data, isSub: true, score: data?.score + 10000 });
         alert(`Статус подписки: ${status}`);
       } else {
         console.error(
