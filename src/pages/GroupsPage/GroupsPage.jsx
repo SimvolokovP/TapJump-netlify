@@ -4,7 +4,7 @@ import GroupsAvaib from "../../components/GroupsAvaib/GroupsAvaib";
 import { useState } from "react";
 
 const GroupsPage = ({ userId }) => {
-  const INVITE_URL = "tapJumpTest_bot";
+  const INVITE_URL = "Tapjumpers";
   const handleShareClick = () => {
     const inviteLink = `https://t.me/${INVITE_URL}?startapp`;
     const shareText = `Join me on this awesome Telegram group!`;
@@ -26,12 +26,6 @@ const GroupsPage = ({ userId }) => {
         </p>
         <GroupsAvaib />
         <FriendsBlock handleClick={handleShareClick} />
-        <button
-          onClick={handleShareClick}
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
-        >
-          Share Invite Link
-        </button>
       </div>
     </div>
   );

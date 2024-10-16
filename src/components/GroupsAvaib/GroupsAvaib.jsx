@@ -17,9 +17,7 @@ const GroupsAvaib = () => {
       <div className="groups-page__referal">
         <div className="groups-page__gift--text">
           <div>your refferal link</div>
-          <a href="https://t.me/yakudzacoinbot?start=634713323">
-            https://t.me/yakudzacoinbot?start=634713323
-          </a>
+          <a href="#">soon</a>
         </div>
         <img src={referal} alt="referal" />
       </div>
