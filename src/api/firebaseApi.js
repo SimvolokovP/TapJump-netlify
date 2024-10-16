@@ -85,4 +85,21 @@ export default class UsersService {
       throw error;
     }
   }
+  static async resetAllFarmStates() {
+    try {
+      const ref = collection(firebaseDB, "users");
+      const querySnapshot = await getDocs(ref);
+      const updates = querySnapshot.docs.map((doc) => {
+        return updateDoc(doc.ref, {
+          isFarm: false,
+          farmEnd: null,
+        });
+      });
+      await Promise.all(updates);
+      console.log("All users' farm states have been reset!");
+    } catch (error) {
+      console.error("Error resetting farm states:", error);
+      throw error;
+    }
+  }
 }

@@ -1,3 +1,30 @@
 .wallet-page {
   background-color: var(--back-color);
+  
+}
+
+.wallet-page__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  justify-content: center;
+}
+
+.ton-image {
+  width: 65px;
+  margin-bottom: 15px;
+}
+
+.wallet-page__container div {
+  margin-bottom: 30px;
+}
+
+.wallet-page__btn {
+  background-color: #1E1E1E;
+  color: var(--text-color);
+  border: none;
+  border-radius: 10px;
+  width: 290px;
+  padding: 15px 0;
 }

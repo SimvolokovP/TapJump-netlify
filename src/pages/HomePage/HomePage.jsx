@@ -8,37 +8,9 @@ import "./HomePage.css";
 import UsersService from "../../api/firebaseApi";
 import { useTg } from "../../hooks/useTg";
 import LoadingScreen from "../../components/LoadingScreen/LoadingScreen";
-import secretHero from '../../assets/secretHero.png';
+import coinGif from "../../assets/coinGif.gif";
 
-const HomePage = () => {
-  const [fakeLoading, setFakeLoading] = useState(true);
-  const { user } = useTg();
-  const [data, setData] = useState({});
-
-  useEffect(() => {
-    async function fetchCurrentUser() {
-      try {
-        console.log(user);
-        if (user) {
-          const u = await UsersService.getUserById(user?.id);
-
-          setData(u);
-          setFakeLoading(false);
-          console.log("cu", data);
-        } else {
-          const u = await UsersService.getUserById(171718);
-
-          setData(u);
-          setFakeLoading(false);
-          console.log("cu", data);
-        }
-      } catch (error) {
-        console.error("Failed to fetch users:", error);
-      }
-    }
-    fetchCurrentUser();
-  }, [user]);
-
+const HomePage = ({ fakeLoading, setFakeLoading, user, data, setData }) => {
   return (
     <div className="page home-page">
       {fakeLoading && <LoadingScreen />}
@@ -50,7 +22,7 @@ const HomePage = () => {
         </div>
         <div className="flex">
           {/* <MainButton /> */}
-          <img className="secret-hero" src={secretHero} alt="secret" />
+          <img className="secret-hero" src={coinGif} alt="coin" />
         </div>
         <ScoreBlock userData={data} />
         <MiniGamesMessage />
