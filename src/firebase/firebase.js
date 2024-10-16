@@ -4,12 +4,12 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDPerefo-5ry62ddkAs8bgpqpf67mv_O44",
-  authDomain: "tapjumpers.firebaseapp.com",
-  projectId: "tapjumpers",
-  storageBucket: "tapjumpers.appspot.com",
-  messagingSenderId: "786784959821",
-  appId: "1:786784959821:web:82533d87622b55c3d38b04"
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_ID
 };
 
 export const app = initializeApp(firebaseConfig);

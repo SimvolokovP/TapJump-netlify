@@ -3,35 +3,43 @@ import TasksList from "../../components/TasksList/TasksList";
 import "./TasksPage.css";
 import coin1 from "../../assets/coin1.png";
 import coin2 from "../../assets/coin2.png";
-import { path } from "../../utils/utils";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 
 const TasksPage = ({ id, queryId }) => {
-  const handleCheckSubscription = useCallback(async () => {
-    console.log("click");
-    const dataRef = { id, queryId };
-    try {
-      console.log("start", id, queryId);
-      const response = await fetch(`${path}/check-subscription`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(dataRef),
-      });
+  const [isSubscribed, setIsSubscribed] = useState(null);
 
+  const handleCheckSubscription = useCallback(async () => {
+    try {
+      const response = await fetch(
+        `https://api.telegram.org/bot${
+          import.meta.env.VITE_TG_TOKEN
+        }/getChatMember?chat_id=${import.meta.env.VITE_CHAT_ID}&user_id=${id}`
+      );
       const data = await response.json();
-      console.log("resp", response, data);
-      if (data.isSub) {
-        alert("You are a subscriber!");
+
+      if (data.ok) {
+        const status = data.result.status;
+        setIsSubscribed(
+          status === "member" ||
+            status === "administrator" ||
+            status === "creator"
+        );
+
+        // Вывод статуса в всплывающем окне
+        alert(`Статус подписки: ${status}`);
       } else {
-        alert("You need to subscribe to the channel.");
+        console.error("Error fetching subscription status:", data.description);
+        alert(
+          "Произошла ошибка при получении статуса подписки. Вы не подписаны."
+        );
+        setIsSubscribed(false);
       }
     } catch (error) {
-      console.error("Error checking subscription:", error);
-      alert("There was an error checking your subscription status.");
+      console.error("Error:", error);
+      alert("Произошла ошибка. Пожалуйста, попробуйте позже.");
+      setIsSubscribed(false);
     }
-  }, [id, queryId]);
+  }, [id]);
 
   return (
     <div className="page tasks-page">
@@ -46,11 +54,11 @@ const TasksPage = ({ id, queryId }) => {
       <div className="container">
         <h3 className="tasks-page__title">Social networks</h3>
         <p className="tasks-page__descr">
-          join to our community for the latest news andupdates
+          Join our community for the latest news and updates
         </p>
         <TasksList handleClick={handleCheckSubscription} />
         <h3 style={{ fontSize: "13px" }} className="tasks-page__title">
-          soon.....
+          Soon.....
         </h3>
         <NetworkList />
       </div>
