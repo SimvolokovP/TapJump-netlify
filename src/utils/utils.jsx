@@ -1,5 +1,7 @@
 import { ReactSVG } from "react-svg";
 
+export const path = "http://localhost:8000";
+
 export const navLinks = [
   {
     to: "/",

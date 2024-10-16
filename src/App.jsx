@@ -30,7 +30,7 @@ function App() {
         setTimeout(() => {
           setFakeLoading(false);
           console.log("cu", u);
-        }, 1500); 
+        }, 1500);
       } catch (error) {
         console.error("Failed to fetch users:", error);
       }
@@ -59,7 +59,7 @@ function App() {
               />
             }
           />
-          <Route path="/tasks" element={<TasksPage />} />
+          <Route path="/tasks" element={<TasksPage user={user?.id} />} />
           <Route path="/groups" element={<GroupsPage />} />
           <Route path="/wallet" element={<WalletPage />} />
         </Routes>
