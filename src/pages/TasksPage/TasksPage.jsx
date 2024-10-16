@@ -20,6 +20,7 @@ const TasksPage = ({ id, queryId }) => {
       });
 
       const data = await response.json();
+      console.log("resp", response, data);
       if (data.isSub) {
         alert("You are a subscriber!");
       } else {
