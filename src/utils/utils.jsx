@@ -1,4 +1,4 @@
-export const path = "https://4100-176-59-78-170.ngrok-free.app";
+export const path = "http://localhost:8000";
 
 export const navLinks = [
   {
