@@ -4,16 +4,19 @@ import "./TasksPage.css";
 import coin1 from "../../assets/coin1.png";
 import coin2 from "../../assets/coin2.png";
 import { path } from "../../utils/utils";
+import { useCallback } from "react";
 
-const TasksPage = ({ id }) => {
-  const handleCheckSubscription = async () => {
+const TasksPage = ({ id, queryId }) => {
+  const handleCheckSubscription = useCallback(async () => {
+    console.log("click");
     try {
+      console.log("start", id, queryId);
       const response = await fetch(`${path}/check-subscription`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ id }),
+        body: JSON.stringify({ id, queryId }),
       });
 
       const data = await response.json();
@@ -26,7 +29,7 @@ const TasksPage = ({ id }) => {
       console.error("Error checking subscription:", error);
       alert("There was an error checking your subscription status.");
     }
-  };
+  }, [id, queryId]);
 
   return (
     <div className="page tasks-page">
@@ -44,7 +47,7 @@ const TasksPage = ({ id }) => {
           join to our community for the latest news andupdates
         </p>
         <TasksList />
-        <button onClick={() => handleCheckSubscription}>taskButton</button>
+        <button onClick={() => handleCheckSubscription()}>taskButton</button>
         <h3 style={{ fontSize: "13px" }} className="tasks-page__title">
           soon.....
         </h3>

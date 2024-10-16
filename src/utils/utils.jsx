@@ -1,5 +1,3 @@
-import { ReactSVG } from "react-svg";
-
 export const path = " https://1f2f-176-59-78-170.ngrok-free.app";
 
 export const navLinks = [

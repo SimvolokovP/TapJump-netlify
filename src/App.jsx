@@ -12,7 +12,7 @@ import UsersService from "./api/firebaseApi";
 function App() {
   const { tg } = useTg();
   const [fakeLoading, setFakeLoading] = useState(true);
-  const { user } = useTg();
+  const { user, queryId } = useTg();
   const [data, setData] = useState({});
 
   useEffect(() => {
@@ -59,7 +59,10 @@ function App() {
               />
             }
           />
-          <Route path="/tasks" element={<TasksPage user={user?.id} />} />
+          <Route
+            path="/tasks"
+            element={<TasksPage queryId={queryId} id={user?.id} />}
+          />
           <Route path="/groups" element={<GroupsPage />} />
           <Route path="/wallet" element={<WalletPage />} />
         </Routes>
