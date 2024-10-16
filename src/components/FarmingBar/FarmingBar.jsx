@@ -26,7 +26,7 @@ const FarmingBar = ({ userData, setUserData }) => {
   const startFarm = async () => {
     const currentTime = Timestamp.now();
     const time = new Timestamp(
-      currentTime.seconds + 432000,
+      currentTime.seconds + 43200,
       currentTime.nanoseconds
     );
 
@@ -44,7 +44,7 @@ const FarmingBar = ({ userData, setUserData }) => {
         const remainingTime = userData.farmEnd.seconds - currentTime.seconds;
 
         if (remainingTime > 0) {
-          const score = ((remainingTime / 432000) * 100).toFixed(3);
+          const score = ((remainingTime / 43200) * 100).toFixed(3);
           setFarmScore(score);
         } else {
           clearInterval(intervalId);
@@ -79,7 +79,7 @@ const FarmingBar = ({ userData, setUserData }) => {
             <div>{farmingDone ? "Claim" : "Farming"}</div>
             <div>
               <img src={coin} alt="coin" />
-              {((100 - farmScore) * 10).toFixed(4)}
+              {((100 - farmScore) * 10).toFixed(3)}
             </div>
           </div>
         </>

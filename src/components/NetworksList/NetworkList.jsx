@@ -1,12 +1,13 @@
 import { networksList } from "../../utils/utils";
+import './NetworkList.css';
 
 const NetworkList = () => {
   return (
-    <ul className="list-reset tasks-list">
-      {networksList.map((task) => (
-        <li className="task-item" key={task.text}>
+    <ul className="list-reset networks-list">
+      {networksList.map((task, id) => (
+        <li className="network-item" key={task.text + id}>
           {task?.image}
-          <div className="task-item__text">
+          <div className="network-item__text">
             <div>{task.text}</div>
             <span>{task.coins} coins</span>
           </div>

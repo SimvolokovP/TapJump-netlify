@@ -20,13 +20,31 @@
   gap: 18px;
 }
 
+.loading-screen__dark {
+  position: absolute;
+  background-color: var(--dark-color);
+  width: 100%;
+  height: 100vh;
+  z-index: 11;
+  animation: fadeIn 0.4s ease; 
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 100%;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 .loading-screen img {
   width: 280px;
 }
 
 .loading-screen__title {
   margin: 0;
-  font-size: 70px;
+  font-size: 46px;
   max-width: 470px;
 }
 

@@ -1,7 +1,11 @@
 .home-page {
-    padding-top: 15px;
-    background-image: url(../../assets/back-home.png);
-    background-repeat: repeat;
-    background-size: cover;
-    background-position: center;
+  padding-top: 15px;
+  background-image: url(../../assets/back-home.png);
+  background-repeat: repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.secret-hero {
+    width: 200px;
 }

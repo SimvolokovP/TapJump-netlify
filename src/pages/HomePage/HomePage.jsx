@@ -8,6 +8,7 @@ import "./HomePage.css";
 import UsersService from "../../api/firebaseApi";
 import { useTg } from "../../hooks/useTg";
 import LoadingScreen from "../../components/LoadingScreen/LoadingScreen";
+import secretHero from '../../assets/secretHero.png';
 
 const HomePage = () => {
   const [fakeLoading, setFakeLoading] = useState(true);
@@ -43,8 +44,13 @@ const HomePage = () => {
       {fakeLoading && <LoadingScreen />}
       <div className="container">
         {/* <Stats /> */}
+        <div className="score-block__account">
+          <div>account:</div>
+          <h3>{user ? user?.username : "-"}</h3>
+        </div>
         <div className="flex">
-          <MainButton />
+          {/* <MainButton /> */}
+          <img className="secret-hero" src={secretHero} alt="secret" />
         </div>
         <ScoreBlock userData={data} />
         <MiniGamesMessage />

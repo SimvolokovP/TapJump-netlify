@@ -13,11 +13,13 @@
   flex-direction: column;
   text-align: center;
   gap: 12px;
+  margin-bottom: 11px;
 }
 
 .score-block__account h3 {
   margin: 0;
-  font-size: 24px;
+  font-size: calc(1em + 4vw);
+  text-align: center;
 }
 
 .score-block__account div {
@@ -29,6 +31,7 @@
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .score-block__score img {

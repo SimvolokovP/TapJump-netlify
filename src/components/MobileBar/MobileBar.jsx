@@ -7,7 +7,13 @@ const MobileBar = () => {
     <div className="mobile-bar">
       <ul className="list-reset mobile-bar__list">
         {navLinks.map((link) => (
-          <li key={link.to}>
+          <li
+            className={link.isBlocked && "mobile-bar__blocked--item"}
+            key={link.text}
+          >
+            {link?.isBlocked && (
+              <div className="mobile-bar__blocked">{link.lockIcon} soon...</div>
+            )}
             <NavLink
               className={(e) =>
                 e.isActive ? "mobile-bar__link active" : "mobile-bar__link"

@@ -1,5 +1,5 @@
-.task-item {
-  background-color: var(--gold-color);
+.network-item {
+  background-color: #5f5f5f;
   border-radius: 7px;
   padding: 18px 18px;
   display: flex;
@@ -7,23 +7,22 @@
   gap: 20px;
 }
 
-.task-item__text {
+.network-item__text {
   display: flex;
   flex-direction: column;
   gap: 11px;
 }
 
-.task-item__text div {
+.network-item__text div {
   font-size: 14px;
 }
 
-.task-item__text span {
+.network-item__text span {
   font-size: 10px;
 }
 
-.tasks-list {
+.networks-list {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-bottom: 30px !important;
 }
