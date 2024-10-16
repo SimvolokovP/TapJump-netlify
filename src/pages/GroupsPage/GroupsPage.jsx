@@ -3,6 +3,14 @@ import FriendsBlock from "../../components/FriendsBlock/FriendsBlock";
 import GroupsAvaib from "../../components/GroupsAvaib/GroupsAvaib";
 
 const GroupsPage = () => {
+  const shareLink = "https://t.me/druzhbany";
+  const message = `Check out this group! ${shareLink}`; 
+
+  const handleShareClick = () => {
+    const url = `tg://msg_url?url=${encodeURIComponent(shareLink)}&text=${encodeURIComponent(message)}`;
+    window.open(url);
+  };
+
   return (
     <div className="page groups-page">
       <div className="blur1"></div>
@@ -14,7 +22,7 @@ const GroupsPage = () => {
           invite your friends and get more coins through the referral program!
         </p>
         <GroupsAvaib />
-        <FriendsBlock />
+        <FriendsBlock handleClick={handleShareClick} />
       </div>
     </div>
   );

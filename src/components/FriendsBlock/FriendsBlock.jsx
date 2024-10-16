@@ -2,9 +2,9 @@ import refresh from "../../assets/refresh.png";
 import "./FriendsBlock.css";
 import empty from "../../assets/empty.png";
 import { useState } from "react";
-import message from '../../assets/message.png'
+import message from "../../assets/message.png";
 
-const FriendsBlock = () => {
+const FriendsBlock = ({ handleClick }) => {
   const [friends, setFriends] = useState([]);
 
   return (
@@ -27,9 +27,13 @@ const FriendsBlock = () => {
           </>
         )}
       </div>
-      <button className="btn-reset accent-btn accent-btn__friends">
+      <button
+        onClick={handleClick}
+        className="btn-reset accent-btn accent-btn__friends"
+      >
         <img src={message} alt="message" />
-        send link</button>
+        send link
+      </button>
     </div>
   );
 };
