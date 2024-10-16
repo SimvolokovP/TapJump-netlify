@@ -1,14 +1,17 @@
 import "./GroupsPage.css";
 import FriendsBlock from "../../components/FriendsBlock/FriendsBlock";
 import GroupsAvaib from "../../components/GroupsAvaib/GroupsAvaib";
+import { useState } from "react";
 
-const GroupsPage = () => {
-  const shareLink = "https://t.me/druzhbany";
-  const message = `Check out this group! ${shareLink}`; 
-
+const GroupsPage = ({ userId }) => {
+  const INVITE_URL = "tapJumpTest_bot";
   const handleShareClick = () => {
-    const url = `tg://msg_url?url=${encodeURIComponent(shareLink)}&text=${encodeURIComponent(message)}`;
-    window.open(url);
+    const inviteLink = `https://t.me/${INVITE_URL}?startapp`;
+    const shareText = `Join me on this awesome Telegram group!`;
+    const fullUrl = `https://t.me/share/url?url=${encodeURIComponent(
+      inviteLink
+    )}&text=${encodeURIComponent(shareText)}`;
+    window.open(fullUrl);
   };
 
   return (
@@ -23,6 +26,12 @@ const GroupsPage = () => {
         </p>
         <GroupsAvaib />
         <FriendsBlock handleClick={handleShareClick} />
+        <button
+          onClick={handleShareClick}
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+        >
+          Share Invite Link
+        </button>
       </div>
     </div>
   );
