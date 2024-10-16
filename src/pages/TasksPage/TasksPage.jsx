@@ -24,22 +24,18 @@ const TasksPage = ({ data, setData }) => {
       if (dataResp.ok) {
         const status = dataResp.result.status;
 
-        // Проверяем, подписан ли пользователь
         if (
           status === "member" ||
           status === "administrator" ||
           status === "creator"
         ) {
+          await UsersService.updateUser(data);
           setIsSubscribed(true);
-          // Изменение состояния только при успешной подписке
-          const updatedData = {
+          setData({
             ...data,
             isSub: true,
             score: data?.score + 10000,
-          };
-          setData(updatedData);
-          // Здесь вы можете отправить обновленные данные в базу, если необходимо
-          await UsersService.updateUser(updatedData); // метод обновления пользователя в базе
+          });
           alert(`Статус подписки: ${status}`);
         } else {
           setIsSubscribed(false);
