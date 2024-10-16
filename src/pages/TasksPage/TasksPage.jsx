@@ -18,19 +18,23 @@ const TasksPage = ({ data, setData }) => {
           data?.id
         }`
       );
-      const data = await response.json();
+      const dataResp = await response.json();
 
-      if (data.ok) {
-        const status = data.result.status;
+      if (dataResp.ok) {
+        const status = dataResp.result.status;
         await UsersService.getStatusSubs(data);
         setIsSubscribed(
           status === "member" ||
             status === "administrator" ||
             status === "creator"
         );
+        setData({ ...data, isSub: true, score: score + 10000 });
         alert(`Статус подписки: ${status}`);
       } else {
-        console.error("Error fetching subscription status:", data.description);
+        console.error(
+          "Error fetching subscription status:",
+          dataResp.description
+        );
         alert(
           "Произошла ошибка при получении статуса подписки. Вы не подписаны."
         );
@@ -58,6 +62,9 @@ const TasksPage = ({ data, setData }) => {
         <p className="tasks-page__descr">
           Join our community for the latest news and updates
         </p>
+        <button onClick={async () => await UsersService.resetAllSubStates()}>
+          btn
+        </button>
         {!data?.isSub && <TasksList handleClick={handleCheckSubscription} />}
         <h3 style={{ fontSize: "13px" }} className="tasks-page__title">
           Soon.....
