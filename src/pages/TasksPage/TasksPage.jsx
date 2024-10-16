@@ -48,8 +48,7 @@ const TasksPage = ({ id, queryId }) => {
         <p className="tasks-page__descr">
           join to our community for the latest news andupdates
         </p>
-        <TasksList />
-        <button onClick={() => handleCheckSubscription()}>taskButton</button>
+        <TasksList handleClick={handleCheckSubscription} />
         <h3 style={{ fontSize: "13px" }} className="tasks-page__title">
           soon.....
         </h3>

@@ -14,8 +14,8 @@ const HomePage = ({ fakeLoading, setFakeLoading, user, data, setData }) => {
       <div className="container">
         {/* <Stats /> */}
         <div className="score-block__account">
-          <h3 style={{ textAlign: "start", margin: "0px" }}>
-            {user ? user?.username : "-"}
+          <h3 className="home-page__title" style={{ textAlign: "start", margin: "0px", fontSize: "18px" }}>
+            {user ? user?.username : "Not Found"}
           </h3>
         </div>
         <div className="flex">
