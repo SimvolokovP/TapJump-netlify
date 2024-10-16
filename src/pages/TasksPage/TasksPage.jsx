@@ -18,24 +18,31 @@ const TasksPage = ({ data, setData }) => {
           data?.id
         }`
       );
-
       const dataResp = await response.json();
 
       if (dataResp.ok) {
         const status = dataResp.result.status;
 
+        // Проверяем статус подписки
         if (
           status === "member" ||
           status === "administrator" ||
           status === "creator"
         ) {
-          await UsersService.updateUser(data);
+          // Устанавливаем состояние подписки
           setIsSubscribed(true);
-          setData({
+
+          // Обновляем данные о пользователе и их очки
+          const updatedData = {
             ...data,
             isSub: true,
             score: data?.score + 10000,
-          });
+          };
+          setData(updatedData);
+
+          // Здесь мы можем вызвать метод обновления данных пользователя
+          await UsersService.updateUser(updatedData); // Например, метод updateUser
+
           alert(`Статус подписки: ${status}`);
         } else {
           setIsSubscribed(false);
