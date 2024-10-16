@@ -102,4 +102,18 @@ export default class UsersService {
       throw error;
     }
   }
+  static async getStatusSubs(user) {
+    console.log(user);
+    try {
+      const userRef = doc(firebaseDB, "users", String(user.id));
+      await updateDoc(userRef, {
+        isSub: true,
+        score: user?.score + 10000,
+      });
+      console.log("UPDATE!");
+    } catch (error) {
+      console.error("Error updating user score:", error);
+      throw error;
+    }
+  }
 }

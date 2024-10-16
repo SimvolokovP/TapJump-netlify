@@ -4,8 +4,9 @@ import "./TasksPage.css";
 import coin1 from "../../assets/coin1.png";
 import coin2 from "../../assets/coin2.png";
 import { useCallback, useState } from "react";
+import UsersService from "../../api/firebaseApi";
 
-const TasksPage = ({ id, queryId }) => {
+const TasksPage = ({ data, setData }) => {
   const [isSubscribed, setIsSubscribed] = useState(null);
 
   const handleCheckSubscription = useCallback(async () => {
@@ -13,19 +14,20 @@ const TasksPage = ({ id, queryId }) => {
       const response = await fetch(
         `https://api.telegram.org/bot${
           import.meta.env.VITE_TG_TOKEN
-        }/getChatMember?chat_id=${import.meta.env.VITE_CHAT_ID}&user_id=${id}`
+        }/getChatMember?chat_id=${import.meta.env.VITE_CHAT_ID}&user_id=${
+          data?.id
+        }`
       );
       const data = await response.json();
 
       if (data.ok) {
         const status = data.result.status;
+        await UsersService.getStatusSubs(data);
         setIsSubscribed(
           status === "member" ||
             status === "administrator" ||
             status === "creator"
         );
-
-        // Вывод статуса в всплывающем окне
         alert(`Статус подписки: ${status}`);
       } else {
         console.error("Error fetching subscription status:", data.description);
@@ -39,7 +41,7 @@ const TasksPage = ({ id, queryId }) => {
       alert("Произошла ошибка. Пожалуйста, попробуйте позже.");
       setIsSubscribed(false);
     }
-  }, [id]);
+  }, [data?.id]);
 
   return (
     <div className="page tasks-page">
@@ -56,7 +58,7 @@ const TasksPage = ({ id, queryId }) => {
         <p className="tasks-page__descr">
           Join our community for the latest news and updates
         </p>
-        <TasksList handleClick={handleCheckSubscription} />
+        {!data?.isSub && <TasksList handleClick={handleCheckSubscription} />}
         <h3 style={{ fontSize: "13px" }} className="tasks-page__title">
           Soon.....
         </h3>

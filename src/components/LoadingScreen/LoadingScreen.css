@@ -20,13 +20,20 @@
   gap: 18px;
 }
 
+.loading-screen__descr,
+.loading-screen__links,
+.loading-screen__title {
+  opacity: 0;
+  animation: visibleAnim 1s ease forwards;
+}
+
 .loading-screen__dark {
   position: absolute;
   background-color: var(--dark-color);
   width: 100%;
   height: 100vh;
   z-index: 11;
-  animation: fadeIn 0.4s ease; 
+  animation: fadeIn 1s ease forwards;
 }
 
 @keyframes fadeIn {
@@ -35,6 +42,15 @@
   }
   100% {
     opacity: 0;
+  }
+}
+
+@keyframes visibleAnim {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 1;
   }
 }
 
