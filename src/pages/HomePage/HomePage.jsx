@@ -42,7 +42,7 @@ const HomePage = () => {
     <div className="page home-page">
       {fakeLoading && <LoadingScreen />}
       <div className="container">
-        <Stats />
+        {/* <Stats /> */}
         <div className="flex">
           <MainButton />
         </div>
