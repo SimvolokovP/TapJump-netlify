@@ -18,18 +18,33 @@ const TasksPage = ({ data, setData }) => {
           data?.id
         }`
       );
+
       const dataResp = await response.json();
 
       if (dataResp.ok) {
         const status = dataResp.result.status;
-        await UsersService.getStatusSubs(data);
-        setIsSubscribed(
+
+        // Проверяем, подписан ли пользователь
+        if (
           status === "member" ||
-            status === "administrator" ||
-            status === "creator"
-        );
-        setData({ ...data, isSub: true, score: data?.score + 10000 });
-        alert(`Статус подписки: ${status}`);
+          status === "administrator" ||
+          status === "creator"
+        ) {
+          setIsSubscribed(true);
+          // Изменение состояния только при успешной подписке
+          const updatedData = {
+            ...data,
+            isSub: true,
+            score: data?.score + 10000,
+          };
+          setData(updatedData);
+          // Здесь вы можете отправить обновленные данные в базу, если необходимо
+          await UsersService.updateUser(updatedData); // метод обновления пользователя в базе
+          alert(`Статус подписки: ${status}`);
+        } else {
+          setIsSubscribed(false);
+          alert("Вы не подписаны на канал.");
+        }
       } else {
         console.error(
           "Error fetching subscription status:",
@@ -45,7 +60,7 @@ const TasksPage = ({ data, setData }) => {
       alert("Произошла ошибка. Пожалуйста, попробуйте позже.");
       setIsSubscribed(false);
     }
-  }, [data?.id]);
+  }, [data]);
 
   return (
     <div className="page tasks-page">
