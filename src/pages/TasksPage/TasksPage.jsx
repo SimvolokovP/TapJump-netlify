@@ -9,12 +9,11 @@ const TasksPage = ({ id }) => {
   const handleCheckSubscription = async () => {
     try {
       const response = await fetch(`${path}/check-subscription`, {
-        // Update with the correct URL
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ id }), // Send chatId in the request body
+        body: JSON.stringify({ id }),
       });
 
       const data = await response.json();
