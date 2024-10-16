@@ -1,0 +1,41 @@
+.score-block {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 38px;
+  margin-bottom: 22px;
+}
+
+.score-block__account {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 12px;
+}
+
+.score-block__account h3 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.score-block__account div {
+  letter-spacing: 11px;
+  font-size: 13px;
+}
+
+.score-block__score {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.score-block__score img {
+  width: 72px;
+}
+
+.score-block__score div {
+  padding-top: 4px;
+  font-size: calc(1em + 4vw);
+}

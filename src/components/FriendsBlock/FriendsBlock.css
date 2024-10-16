@@ -1,0 +1,50 @@
+.friends-block {
+  margin-top: 39px;
+}
+
+.friends-block__chapter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.friends-block__chapter div {
+  display: flex;
+  font-size: 8px;
+  opacity: 88%;
+  align-items: end;
+  gap: 7px;
+}
+
+.friends-block__chapter div img {
+  width: 21px;
+}
+
+.friends-block__list {
+  background-color: var(--dark-color);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 23px 0 19px 0;
+  align-items: center;
+  text-align: center;
+  font-size: 10px;
+  border-radius: 7px;
+  margin-bottom: 17px;
+}
+
+.friends-block__list img {
+  width: 47px;
+}
+
+.friends-block__list span {
+  opacity: 48%;
+  font-size: 6px;
+  max-width: 223px;
+  line-height: 9px;
+}
+
+.accent-btn__friends {
+  margin: 0 auto;
+}

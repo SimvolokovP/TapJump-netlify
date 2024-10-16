@@ -1,0 +1,29 @@
+.task-item {
+  background-color: var(--gold-color);
+  border-radius: 7px;
+  padding: 23px 18px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.task-item__text {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.task-item__text div {
+  font-size: 14px;
+}
+
+.task-item__text span {
+  font-size: 10px;
+}
+
+.tasks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 47px !important;
+}

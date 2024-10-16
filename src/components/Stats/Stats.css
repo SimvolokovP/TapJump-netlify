@@ -1,0 +1,37 @@
+.stats {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 13px;
+  gap: 6px;
+  margin-bottom: 43px;
+}
+
+.stats__item {
+  background-color: var(--dark-color);
+  padding: 10px 3px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  height: 42px;
+}
+
+.stats__item div {
+  width: 98px;
+  color: var(--text-color);
+}
+
+.stats__item img {
+  width: 25px;
+}
+
+.stats__item--big {
+  padding: 13px 8px;
+  gap: 13px;
+}
+
+.stats__item--big span {
+  color: var(--gold-color);
+}

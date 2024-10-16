@@ -1,0 +1,19 @@
+.tasks-page {
+  background-color: var(--back-color);
+  padding-top: 37px;
+}
+
+.tasks-page__title {
+  margin: 0;
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+.tasks-page__descr {
+  margin: 0;
+  font-size: 8px;
+  width: 239px;
+  line-height: 12px;
+  margin-bottom: 33px;
+  opacity: 88%;
+}

@@ -1,0 +1,63 @@
+.groups-page {
+  background-color: var(--back-color);
+  padding-top: 37px;
+}
+
+.groups-page__title {
+  margin: 0;
+  font-size: 20px;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.groups-page__descr {
+  margin: 0;
+  font-size: 8px;
+  max-width: 281px;
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 22px;
+  opacity: 88%;
+}
+
+.groups-page__gift {
+  margin-bottom: 5px;
+}
+
+.groups-page__gift,
+.groups-page__referal {
+  background-color: var(--gold-color);
+  border-radius: 7px;
+  padding: 16px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.groups-page__gift img {
+  width: 37px;
+  height: 37px;
+}
+
+.groups-page__referal img {
+  width: 24px;
+  height: 24px;
+}
+
+.groups-page__gift--text {
+  display: flex;
+  flex-direction: column;
+  font-size: 8px;
+  line-height: 12px;
+  gap: 8px;
+}
+
+.groups-page__gift--text span {
+  opacity: 70%;
+}
+
+.groups-page__gift--text a {
+    font-size: 7px;
+    opacity: 62%;
+}

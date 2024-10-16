@@ -1,0 +1,162 @@
+@import url(https://db.onlinewebfonts.com/c/e844e1db9d25590da3283ed203b03f86?family=F8BIT+WONDER%28RUS+BY+LYAJKA%29);
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: "F8BIT WONDER(RUS BY LYAJKA)";
+  color: var(--text-color);
+}
+
+:root {
+  --dark-color: #0c0c0c;
+  --text-color: #ffffff;
+  --gold-color: #fec14c;
+  --gray-color: #d2d2d2eb;
+  --back-color: #131313;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  clip: rect(0 0 0 0);
+}
+
+.list-reset {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1220px;
+  padding: 0 10px;
+  position: relative;
+}
+
+.page {
+  height: calc(100vh);
+  padding-bottom: 90px;
+  position: relative;
+  overflow: auto;
+}
+
+.btn-reset {
+  background-color: transparent;
+  cursor: pointer;
+  display: block;
+  padding: 0;
+  border: none;
+}
+
+.flex {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.blur1 {
+  width: 106px;
+  height: 106px;
+  position: absolute;
+  top: 18px;
+  left: -35px;
+  background: var(--gold-color);
+  border-radius: 100%;
+  filter: blur(80px);
+}
+
+.blur2 {
+  width: 106px;
+  height: 106px;
+  position: fixed;
+  bottom: 70px;
+  right: -40px;
+  background: var(--gold-color);
+  border-radius: 100%;
+  filter: blur(90px);
+}
+
+.blur3 {
+  width: 106px;
+  height: 106px;
+  position: fixed;
+  bottom: 210px;
+  left: -70px;
+  background: var(--gold-color);
+  border-radius: 100%;
+  filter: blur(110px);
+}
+
+.blur4 {
+  width: 106px;
+  height: 106px;
+  position: fixed;
+  bottom: 320px;
+  right: -80px;
+  background: var(--gold-color);
+  border-radius: 100%;
+  filter: blur(110px);
+}
+
+.coin1 {
+  width: 123px;
+  position: fixed;
+  top: -52px;
+  right: -52px;
+}
+
+.coin2 {
+  width: 123px;
+  position: fixed;
+  bottom: 335px;
+  left: -85px;
+  z-index: 2;
+}
+
+.common-btn {
+  background-color: var(--gold-color);
+  color: var(--text-color);
+  border-radius: 4px;
+  padding: 9px 19px;
+  font-size: 7px;
+}
+
+.accent-btn {
+  background-color: var(--gold-color);
+  color: var(--text-color);
+  padding: 15px 85px;
+  font-size: 12px;
+  border-radius: 4px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 5px;
+}
+
+.accent-btn img {
+  width: 18px;
+}

@@ -1,0 +1,6 @@
+.home-page {
+    background-image: url(../../assets/back-home.png);
+    background-repeat: repeat;
+    background-size: cover;
+    background-position: center;
+}
