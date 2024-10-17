@@ -43,10 +43,10 @@ const TasksPage = ({ data, setData }) => {
           setData(updatedData);
           await UsersService.getStatusSubs(updatedData);
 
-          alert(`Статус подписки: ${status}`);
+          alert(`You are the ${status} of the channel. You get 10,000 coins`);
         } else {
           setIsSubscribed(false);
-          alert("Вы не подписаны на канал.");
+          alert("Sorry, you are not subscribed to our channel.");
           openTelegramLink(`https://t.me/${import.meta.env.VITE_CANAL_URL}`);
         }
         setIsCheck(false);
@@ -55,13 +55,13 @@ const TasksPage = ({ data, setData }) => {
           "Error fetching subscription status:",
           dataResp.description
         );
-        alert("Произошла ошибка при получении статуса подписки.");
+        alert("An error has occurred. Try again later");
         setIsSubscribed(false);
         setIsCheck(false);
       }
     } catch (error) {
       console.error("Error:", error);
-      alert("Произошла ошибка. Пожалуйста, попробуйте позже.");
+      alert("An error has occurred. Try again later");
       setIsSubscribed(false);
     }
   }, [data]);
