@@ -13,3 +13,10 @@
 .home-page__title {
   font-size: 14px;
 }
+
+.home-page__container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

@@ -5,6 +5,7 @@ import {
   orderBy,
   query,
   setDoc,
+  Timestamp,
   updateDoc,
   where,
 } from "firebase/firestore";
@@ -30,6 +31,24 @@ export default class UsersService {
     }
   }
 
+  static async shortTimeout(id) {
+    const currentTime = Timestamp.now();
+    const time = new Timestamp(
+      currentTime.seconds + 60,
+      currentTime.nanoseconds
+    );
+    try {
+      const userRef = doc(firebaseDB, "users", String(id));
+      await updateDoc(userRef, {
+        farmEnd: time,
+      });
+      console.log("UPDATE!");
+    } catch (error) {
+      console.error("Error updating user score:", error);
+      throw error;
+    }
+  }
+
   static async getUserById(id) {
     try {
       const q = query(collection(firebaseDB, "users"), where("id", "==", id));
@@ -43,7 +62,7 @@ export default class UsersService {
       }
 
       if (!user) {
-        user = { id: id, score: 0, isFarm: false, farmEnd: null };
+        user = { id: id, score: 0, isFarm: false, farmEnd: null, isSub: false };
         const userRef = doc(firebaseDB, "users", String(id));
         await setDoc(userRef, user);
       }
@@ -82,6 +101,25 @@ export default class UsersService {
       console.log("UPDATE!");
     } catch (error) {
       console.error("Error updating user score:", error);
+      throw error;
+    }
+  }
+  static async resetAll() {
+    try {
+      const ref = collection(firebaseDB, "users");
+      const querySnapshot = await getDocs(ref);
+      const updates = querySnapshot.docs.map((doc) => {
+        return updateDoc(doc.ref, {
+          isFarm: false,
+          farmEnd: null,
+          isSub: false,
+          score: 0,
+        });
+      });
+      await Promise.all(updates);
+      console.log("All users' farm states have been reset!");
+    } catch (error) {
+      console.error("Error resetting farm states:", error);
       throw error;
     }
   }

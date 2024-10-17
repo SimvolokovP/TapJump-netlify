@@ -13,7 +13,6 @@ const TasksPage = ({ data, setData }) => {
   const { openTelegramLink } = useTg();
 
   const handleCheckSubscription = useCallback(async () => {
-    console.log(import.meta.env.VITE_CHAT_ID);
     try {
       setIsCheck(true);
       const response = await fetch(
@@ -34,7 +33,7 @@ const TasksPage = ({ data, setData }) => {
           status === "creator"
         ) {
           setIsSubscribed(true);
-
+          
           const updatedData = {
             ...data,
             isSub: true,
