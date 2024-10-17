@@ -8,10 +8,12 @@ import UsersService from "../../api/firebaseApi";
 
 const TasksPage = ({ data, setData }) => {
   const [isSubscribed, setIsSubscribed] = useState(null);
+  const [isCheck, setIsCheck] = useState(false);
 
   const handleCheckSubscription = useCallback(async () => {
     console.log(import.meta.env.VITE_CHAT_ID);
     try {
+      setIsCheck(true);
       const response = await fetch(
         `https://api.telegram.org/bot${
           import.meta.env.VITE_TG_TOKEN
@@ -24,7 +26,6 @@ const TasksPage = ({ data, setData }) => {
       if (dataResp.ok) {
         const status = dataResp.result.status;
 
-        // Проверяем статус подписки
         if (
           status === "member" ||
           status === "administrator" ||
@@ -45,6 +46,7 @@ const TasksPage = ({ data, setData }) => {
           setIsSubscribed(false);
           alert("Вы не подписаны на канал.");
         }
+        setIsCheck(false);
       } else {
         console.error(
           "Error fetching subscription status:",
@@ -54,6 +56,7 @@ const TasksPage = ({ data, setData }) => {
           "Произошла ошибка при получении статуса подписки. Вы не подписаны."
         );
         setIsSubscribed(false);
+        setIsCheck(false);
       }
     } catch (error) {
       console.error("Error:", error);
@@ -80,7 +83,9 @@ const TasksPage = ({ data, setData }) => {
         <button onClick={async () => await UsersService.resetAllSubStates()}>
           btn
         </button>
-        {!data?.isSub && <TasksList handleClick={handleCheckSubscription} />}
+        {!data?.isSub && (
+          <TasksList handleClick={handleCheckSubscription} isCheck={isCheck} />
+        )}
         <h3 style={{ fontSize: "13px" }} className="tasks-page__title">
           Soon.....
         </h3>

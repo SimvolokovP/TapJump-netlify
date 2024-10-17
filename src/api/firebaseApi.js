@@ -124,7 +124,7 @@ export default class UsersService {
       const userRef = doc(firebaseDB, "users", String(user.id));
       await updateDoc(userRef, {
         isSub: true,
-        score: user?.score + 10000,
+        score: user?.score,
       });
       console.log("UPDATE!");
     } catch (error) {
