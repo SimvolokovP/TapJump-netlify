@@ -39,7 +39,6 @@ const HomePage = ({ fakeLoading, setFakeLoading, user, data, setData }) => {
         <div>
           <div className="flex">
             {/* <MainButton /> */}
-            <button onClick={ async () => UsersService.shortTimeout(171718)}>1</button>
             <img className="secret-hero" src={coinGif} alt="coin" />
           </div>
           <ScoreBlock userData={data} />
