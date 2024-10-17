@@ -42,7 +42,7 @@ const FarmingBar = ({ userData, setUserData }) => {
       if (userData.isFarm && userData.farmEnd) {
         const currentTime = Timestamp.now();
         const remainingTime = userData.farmEnd.seconds - currentTime.seconds;
-
+        
         if (remainingTime > 0) {
           const score = ((remainingTime / 43200) * 100).toFixed(3);
           setFarmScore(score);

@@ -5,10 +5,12 @@ import coin1 from "../../assets/coin1.png";
 import coin2 from "../../assets/coin2.png";
 import { useCallback, useState } from "react";
 import UsersService from "../../api/firebaseApi";
+import { useTg } from "../../hooks/useTg";
 
 const TasksPage = ({ data, setData }) => {
   const [isSubscribed, setIsSubscribed] = useState(null);
   const [isCheck, setIsCheck] = useState(false);
+  const { openTelegramLink } = useTg();
 
   const handleCheckSubscription = useCallback(async () => {
     console.log(import.meta.env.VITE_CHAT_ID);
@@ -45,6 +47,7 @@ const TasksPage = ({ data, setData }) => {
         } else {
           setIsSubscribed(false);
           alert("Вы не подписаны на канал.");
+          openTelegramLink(`https://t.me/${import.meta.env.VITE_CANAL_URL}`);
         }
         setIsCheck(false);
       } else {
@@ -52,9 +55,7 @@ const TasksPage = ({ data, setData }) => {
           "Error fetching subscription status:",
           dataResp.description
         );
-        alert(
-          "Произошла ошибка при получении статуса подписки. Вы не подписаны."
-        );
+        alert("Произошла ошибка при получении статуса подписки.");
         setIsSubscribed(false);
         setIsCheck(false);
       }

@@ -4,9 +4,8 @@ import GroupsAvaib from "../../components/GroupsAvaib/GroupsAvaib";
 import { useState } from "react";
 
 const GroupsPage = ({ userId }) => {
-  const INVITE_URL = "Tapjumpers";
   const handleShareClick = () => {
-    const inviteLink = `https://t.me/${INVITE_URL}?startapp`;
+    const inviteLink = `https://t.me/${import.meta.env.VITE_CANAL_URL}?startapp`;
     const shareText = `Join me on this awesome Telegram group!`;
     const fullUrl = `https://t.me/share/url?url=${encodeURIComponent(
       inviteLink
