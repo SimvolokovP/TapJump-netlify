@@ -10,6 +10,7 @@ const TasksPage = ({ data, setData }) => {
   const [isSubscribed, setIsSubscribed] = useState(null);
 
   const handleCheckSubscription = useCallback(async () => {
+    console.log(import.meta.env.VITE_CHAT_ID);
     try {
       const response = await fetch(
         `https://api.telegram.org/bot${
@@ -29,19 +30,15 @@ const TasksPage = ({ data, setData }) => {
           status === "administrator" ||
           status === "creator"
         ) {
-          // Устанавливаем состояние подписки
           setIsSubscribed(true);
 
-          // Обновляем данные о пользователе и их очки
           const updatedData = {
             ...data,
             isSub: true,
             score: data?.score + 10000,
           };
           setData(updatedData);
-
-          // Здесь мы можем вызвать метод обновления данных пользователя
-          await UsersService.updateUser(updatedData); // Например, метод updateUser
+          await UsersService.getStatusSubs(updatedData);
 
           alert(`Статус подписки: ${status}`);
         } else {
