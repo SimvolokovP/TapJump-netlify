@@ -62,7 +62,7 @@ function App() {
           <Route
             path="/tasks"
             element={
-              <TasksPage queryId={queryId} data={{id: 760321368, score: 1000}} setData={setData} />
+              <TasksPage queryId={queryId} data={data} setData={setData} />
             }
           />
           <Route path="/groups" element={<GroupsPage userId={user?.id} />} />

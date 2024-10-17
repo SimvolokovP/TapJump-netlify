@@ -80,9 +80,9 @@ const TasksPage = ({ data, setData }) => {
         <p className="tasks-page__descr">
           Join our community for the latest news and updates
         </p>
-        <button onClick={async () => await UsersService.resetAllSubStates()}>
+        {/* <button onClick={async () => await UsersService.resetAllSubStates()}>
           btn
-        </button>
+        </button> */}
         {!data?.isSub && (
           <TasksList handleClick={handleCheckSubscription} isCheck={isCheck} />
         )}
