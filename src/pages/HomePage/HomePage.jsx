@@ -12,8 +12,13 @@ import UsersService from "../../api/firebaseApi";
 const HomePage = ({ fakeLoading, setFakeLoading, user, data, setData }) => {
   const truncatedUsername =
     user && user.username.length > 9
-      ? user.username.slice(0, 12) + "..."
+      ? user.username.slice(0, 14) + "..."
       : user?.username || "Not Found";
+
+  const getAllUs = async () => {
+    const us = await UsersService.getAllUsers();
+    console.log(us);
+  }
 
   return (
     <div className="page home-page">
@@ -44,6 +49,7 @@ const HomePage = ({ fakeLoading, setFakeLoading, user, data, setData }) => {
           <ScoreBlock userData={data} />
         </div>
         <div>
+    
           <MiniGamesMessage />
           <FarmingBar setUserData={setData} userData={data} />
         </div>

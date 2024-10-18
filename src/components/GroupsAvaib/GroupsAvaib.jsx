@@ -1,7 +1,7 @@
 import gift from "../../assets/gift.png";
 import referal from "../../assets/referal.png";
 
-const GroupsAvaib = () => {
+const GroupsAvaib = ({ handleClick }) => {
   return (
     <>
       <div className="groups-page__gift">
@@ -14,7 +14,7 @@ const GroupsAvaib = () => {
           <span>+ 1000 coins per invited friend</span>
         </div>
       </div>
-      <div className="groups-page__referal">
+      <div onClick={handleClick} className="groups-page__referal">
         <div className="groups-page__gift--text">
           <div>your refferal link</div>
           <a href="#">soon</a>

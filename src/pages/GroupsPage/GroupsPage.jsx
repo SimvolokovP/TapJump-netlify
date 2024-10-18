@@ -12,7 +12,16 @@ const GroupsPage = ({ userId }) => {
     )}&text=${encodeURIComponent(shareText)}`;
     window.open(fullUrl);
   };
-
+  
+  const referalShareClick = () => {
+    const inviteLink = `https://t.me/TapJumpers_bot?start=${userId}`;
+    const shareText = ``;
+    const fullUrl = `https://t.me/share/url?url=${encodeURIComponent(
+      inviteLink
+    )}&text=${encodeURIComponent(shareText)}`;
+    window.open(fullUrl);
+  };
+  
   return (
     <div className="page groups-page">
       <div className="blur1"></div>
@@ -23,7 +32,7 @@ const GroupsPage = ({ userId }) => {
         <p className="groups-page__descr">
           invite your friends and get more coins through the referral program!
         </p>
-        <GroupsAvaib />
+        <GroupsAvaib handleClick={referalShareClick} />
         <FriendsBlock handleClick={handleShareClick} />
       </div>
     </div>
